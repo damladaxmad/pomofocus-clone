@@ -1,0 +1,27 @@
+.navbar {
+    max-width: 550px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* padding: px; */
+    border-bottom: 2px solid #D73B38;
+    margin: 0 auto;
+}
+
+.navbar h2{
+    color: white;
+}
+
+.navbar div{
+    cursor: pointer;
+    background-color: #E17773;
+    color: white;
+    padding: 7px;
+    border-radius: 5px;
+}
+@media only screen and (max-width: 600px) {
+    .navbar {
+      width: 200px;
+      margin: 0 auto;
+    }
+  }
