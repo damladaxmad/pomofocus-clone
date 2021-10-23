@@ -1,8 +1,14 @@
 import React, {useState} from "react";
 import { Button } from "@mui/material";
 import { HiOutlineSwitchHorizontal } from "react-icons/hi";
+import {useDispatch} from "react-redux"
+import { useSelector } from "react-redux";
 
 const Countdown = (props) => {
+  const dispacth = useDispatch()
+  const countBack = useSelector(state => state.colorStore.countBack)
+  const buttonColor = useSelector(state => state.colorStore.buttonColor)
+  const {pomoBack, shortBack, longBack} = useSelector(state => state.colorStore)
   const [ticking, setTicking] = useState(false)
   const [minutes, setMinutes] = useState("25")
   const [seconds, setSeconds] = useState("0")
@@ -28,48 +34,15 @@ const Countdown = (props) => {
 
   // This section is switching between pomo and breaks
 
-  const [pomoBack, setPomoBack] = useState("#BC5753")
-  const [shortBack, setShortBack] = useState("")
-  const [longBack, setLongBack] = useState("")
-  const [countBack, setCountBack] = useState("#DD6662")
-  const [buttonColor, setButtonColor] = useState("#D95550")
 
   const shortClick = () =>{
-    setPomoBack("")
-    setShortBack("#508588")
-    setLongBack("")
-    props.onSwitch({
-      pageColor: "#4C9195",
-    headerColor: "#70A7AA",
-  taskButtonColor: "#448285",
-taskIconColor: "#70A7AA"})
-    setCountBack("#5E9CA0")
-    setButtonColor("#4C9195")
-    
+    dispacth({type: "shortBreak"})    
   }
   const pomoClick = () =>{
-    setPomoBack("#BC5753")
-    setShortBack("")
-    setLongBack("")
-    props.onSwitch({
-      pageColor: "#D95550",
-    headerColor: "#E17773",
-  taskButtonColor: "#D95550",
-taskIconColor: "#E17773"})
-    setCountBack("#DD6662")
-    setButtonColor("#D95550")
+    dispacth({type: "pomodoro"})
   }
   const longClick = () =>{
-    setPomoBack("")
-    setShortBack("")
-    setLongBack("#4B7592")
-    props.onSwitch({
-      pageColor: "#457CA3",
-    headerColor: "#6A96B6",
-  taskButtonColor: "#3D6F92",
-taskIconColor: "#6A96B6"})
-    setCountBack("#5889AC")
-    setButtonColor("#3D6F92")
+    dispacth({type: "longBreak"})
   }
 
   return (
@@ -86,12 +59,15 @@ taskIconColor: "#6A96B6"})
     padding: "5px 10px", borderRadius: "8px",
     fontWeight: "bold"}} onClick = {pomoClick}> Pomodoro </div> <div 
     style = {{backgroundColor: shortBack,
-    padding: "5px 10px", borderRadius: "8px"}} onClick = {shortClick}> Short Break </div> <div
-    style = {{backgroundColor: longBack,
-    padding: "5px 10px", borderRadius: "8px"}} onClick = {longClick}> Long Break </div>
+    padding: "5px 10px", borderRadius: "8px"}} onClick = {shortClick}>
+      Short Break </div> 
+      <div style = {{backgroundColor: longBack,
+    padding: "5px 10px", borderRadius: "8px"}} onClick = {longClick}>
+      Long Break </div>
       </div>
       <p style = {{ fontSize: "120px", fontWeight: "bolder",
-    padding: "0px", margin: "10px 0px", color: "white"}}>{minutes}:{seconds <10 ? adjuster : null}{seconds}</p>
+    padding: "0px", margin: "10px 0px", color: "white"}}>
+      {minutes}:{seconds <10 ? adjuster : null}{seconds}</p>
       <Button disableRipple = {true} variant="contained" style = {{
           width: "200px", backgroundColor: "#FFFFFF",
           color: buttonColor, padding: "8px", fontWeight: "bold",
