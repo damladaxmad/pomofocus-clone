@@ -56,16 +56,19 @@ const Countdown = (props) => {
     color: "white", cursor: "pointer" }}>
         <div style = {{backgroundColor: pomoBack,
     padding: "5px 10px", borderRadius: "8px",
-    fontWeight: "bold"}} onClick = {pomoClick}> Pomodoro </div> <div 
+    fontWeight: pomoBack === "" ? null : "bold"}} onClick = {pomoClick}> Pomodoro </div> <div 
     style = {{backgroundColor: shortBack,
-    padding: "5px 10px", borderRadius: "8px"}} onClick = {shortClick}>
+    padding: "5px 10px", borderRadius: "8px",
+    fontWeight: shortBack === "" ? null : "bold"}} onClick = {shortClick}>
       Short Break </div> 
       <div style = {{backgroundColor: longBack,
-    padding: "5px 10px", borderRadius: "8px"}} onClick = {longClick}>
+    padding: "5px 10px", borderRadius: "8px",
+    fontWeight: longBack === "" ? null : "bold"}} onClick = {longClick}>
       Long Break </div>
       </div>
       <p style = {{ fontSize: "120px", fontWeight: "bolder",
-    padding: "0px", margin: "10px 0px", color: "white"}}>
+    padding: "0px", margin: "10px 0px", color: "white",
+    fontFamily: "times new roman"}}>
       {minutes}:{seconds <10 ? adjuster : null}{seconds}</p>
       <Button disableRipple = {true} variant="contained" style = {{
           width: "200px", backgroundColor: "#FFFFFF",

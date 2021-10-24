@@ -2,6 +2,7 @@ import React from "react"
 import { BiDotsVertical } from 'react-icons/bi';
 import { RiAddCircleFill } from 'react-icons/ri';
 import {Button} from "@mui/material"
+import TaskItem from "./TaskItem";
 
 const Tasks = (props) =>{
 
@@ -19,12 +20,12 @@ const Tasks = (props) =>{
       }}> <p style = {{margin: "0px"}}> Tasks</p> <BiDotsVertical style = {{
       padding: "5px", backgroundColor: iconColor, borderRadius: "5px",
       cursor: "pointer", }}/> </div>
-
+      <TaskItem/>
       <Button variant = "contained" disableRipple = {true}
       startIcon = {<RiAddCircleFill/>}
       style = {{
           width: "40%", border: "2px dotted grey",
-          backgroundColor: props.colors.tasksColor, margin: "20px 0px",
+          backgroundColor: props.colors.tasksColor, marginBottom: "15px",
           padding: "15px 30px", 
 
       }}> Add Task </Button>
