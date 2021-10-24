@@ -9,12 +9,12 @@ const Countdown = (props) => {
   const countBack = useSelector(state => state.colorStore.countBack)
   const buttonColor = useSelector(state => state.colorStore.buttonColor)
   const {pomoBack, shortBack, longBack} = useSelector(state => state.colorStore)
+  const minutes = useSelector(state => state.timerStore.minutes)
   const [ticking, setTicking] = useState(false)
-  const [minutes, setMinutes] = useState("25")
   const [seconds, setSeconds] = useState("0")
   const [buttonLabel, setButtonLabel] = useState("Start")
-  const startingMinutes = 25;
-  let time = startingMinutes * 60;
+  // const startingMinutes = 25;
+  // let time = startingMinutes * 60;
   let adjuster = 0
   // const calcTime = () => {
   //   setMinutes(Math.floor(time/60))
@@ -33,7 +33,6 @@ const Countdown = (props) => {
   // }
 
   // This section is switching between pomo and breaks
-
 
   const shortClick = () =>{
     dispacth({type: "shortBreak"})    

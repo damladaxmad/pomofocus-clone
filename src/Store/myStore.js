@@ -12,7 +12,11 @@ const colorStore = {
   longBack: "",
 };
 
-const reducer = (state = { colorStore: colorStore }, action) => {
+const timerStore = {
+  minutes: "25"
+}
+
+const reducer = (state = { colorStore: colorStore, timerStore: timerStore }, action) => {
   if (action.type === "shortBreak") {
     return {
       ...state,
@@ -27,6 +31,9 @@ const reducer = (state = { colorStore: colorStore }, action) => {
         shortBack: "#508588",
         longBack: "",
       },
+      timerStore: {
+        minutes: "05"
+      }
     };
   }
   if (action.type === "longBreak") {
@@ -43,6 +50,9 @@ const reducer = (state = { colorStore: colorStore }, action) => {
         shortBack: "",
         longBack: "#4B7592",
       },
+      timerStore: {
+        minutes: "15"
+      }
     };
   }
   if (action.type === "pomodoro") {
@@ -59,6 +69,9 @@ const reducer = (state = { colorStore: colorStore }, action) => {
         shortBack: "",
         longBack: "",
       },
+      timerStore: {
+        minutes: "25"
+      }
     };
   }
 
