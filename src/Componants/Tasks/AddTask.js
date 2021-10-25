@@ -16,7 +16,7 @@ const useStyles = makeStyles({
 const AddTask = (props) => {
   const classes = useStyles();
   return (
-    <Modal>
+    <Modal onClose = {props.onCancel}>
       <div style={{}}>
         <div>
           <TextField
