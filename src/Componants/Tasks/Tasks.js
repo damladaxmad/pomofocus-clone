@@ -1,11 +1,23 @@
-import React from "react"
+import React, { useState } from "react"
 import { BiDotsVertical } from 'react-icons/bi';
 import { RiAddCircleFill } from 'react-icons/ri';
 import {Button} from "@mui/material"
 import TaskItem from "./TaskItem";
+import AddTask from "./AddTask";
 
 const Tasks = (props) =>{
+    const [modal, setModal] = useState(false)
 
+    const addTask = () =>{
+        setModal(true)
+    }
+
+    const cancelModalHandler = () =>{
+        setModal(false)
+    }
+    const saveModalHandler = () =>{
+        setModal(false)
+    }
     let iconColor = props.colors.iconColor
     return <div style = {{color: "white"}}>
       <p style = {{margin: "5px auto", color: "#EFBBB9"}}> #1 </p>
@@ -21,6 +33,7 @@ const Tasks = (props) =>{
       padding: "5px", backgroundColor: iconColor, borderRadius: "5px",
       cursor: "pointer", }}/> </div>
       <TaskItem/>
+      {modal && <AddTask onCancel = {cancelModalHandler} onSave = {saveModalHandler}/>}
       <Button variant = "contained" disableRipple = {true}
       startIcon = {<RiAddCircleFill/>}
       style = {{
@@ -28,7 +41,7 @@ const Tasks = (props) =>{
           backgroundColor: props.colors.tasksColor, marginBottom: "15px",
           padding: "15px 30px", 
 
-      }}> Add Task </Button>
+      }} onClick = {addTask}> Add Task </Button>
     </div>
 }
 
