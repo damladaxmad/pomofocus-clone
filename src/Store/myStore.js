@@ -16,7 +16,11 @@ const timerStore = {
   minutes: "25"
 }
 
-const reducer = (state = { colorStore: colorStore, timerStore: timerStore }, action) => {
+const tasksStore = []
+
+const reducer = (state = { colorStore: colorStore, timerStore: timerStore,
+  tasksStore: tasksStore, },
+   action) => {
   if (action.type === "shortBreak") {
     return {
       ...state,
@@ -73,6 +77,12 @@ const reducer = (state = { colorStore: colorStore, timerStore: timerStore }, act
         minutes: "25"
       }
     };
+  }
+  if (action.type === "add_task"){
+    return {
+      ...state,
+      tasksStore: [...state.tasksStore, action.payload]
+    }
   }
 
   return state;

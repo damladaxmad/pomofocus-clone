@@ -1,6 +1,7 @@
 import Modal from "../../Modal/Modal";
 import { Button, TextField } from "@mui/material";
 import { makeStyles } from "@mui/styles";
+import { useState } from "react";
 
 const useStyles = makeStyles({
   noBorder: {
@@ -14,6 +15,14 @@ const useStyles = makeStyles({
 });
 
 const AddTask = (props) => {
+
+  const [enteredTask, setEnteredTask] = useState("Allah")
+
+  const changeHandler = (e) =>{
+    console.log("called")
+    setEnteredTask(e.target.value)
+  }
+  console.log(enteredTask)
   const classes = useStyles();
   return (
     <Modal onClose = {props.onCancel}>
@@ -30,6 +39,7 @@ const AddTask = (props) => {
             autoFocus={true}
             fullWidth
             placeholder="What are you working on?"
+            onChange = {changeHandler}
           />
         </div>
 
@@ -56,7 +66,7 @@ const AddTask = (props) => {
             cancel{" "}
           </p>
           <Button style = {{backgroundColor: "#222222"}}
-          onClick = {props.onSave} 
+          onClick = {()=> props.onSave(enteredTask)} 
           variant="contained"> save </Button>
         </div>
       </div>
